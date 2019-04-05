@@ -1,6 +1,7 @@
-import Enzyme, { configure, shallow, mount, render } from "enzyme";
-import Adaptor from "enzyme-adapter-react-16";
+import Enzyme from "enzyme";
+import EnzymeAdaptor from "enzyme-adapter-react-16";
 
-configure({ adapter: new Adaptor(), disableLifecycleMethods: true });
-export { shallow, mount, render };
-export default Enzyme;
+Enzyme.configure({
+  adapter: new EnzymeAdaptor(),
+  disableLifecycleMethods: true,
+});
