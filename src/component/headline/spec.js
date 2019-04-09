@@ -53,6 +53,7 @@ describe("Headline Component", () => {
       const desc = findByTestAttr(wrapper, "desc");
       expect(desc.length).toBe(1);
     });
+    
     describe("Have no props", () => {
       let wrapper;
       beforeEach(() => {
