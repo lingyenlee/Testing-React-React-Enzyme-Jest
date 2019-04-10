@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import Header from "./index";
 import { findByTestAttr } from "../../../Utils";
+import renderer from "react-test-renderer"
 
 //pass default props or some empty objects in the props
 // do a setup that do shallow render
@@ -12,11 +13,17 @@ const setUp = (props = {}) => {
 
 describe("Header Component", () => {
 
+
  // run beforeEach pass the props to the shallow render of Header
   let component;
   beforeEach(() => {
     component = setUp();
   });
+
+  it("should match the snapshot", () => {
+    const tree = renderer.create(<Header/>).toJSON();
+    expect(tree).toMatchSnapshot();
+  })
 
   it("should render without error", () => {
     const wrapper = findByTestAttr(component, "HeaderComponent");

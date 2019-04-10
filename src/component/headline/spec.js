@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import Headline from "./index";
 import { findByTestAttr, checkProps } from "../../../Utils";
+import renderer from "react-test-renderer";
 
 const setUp = props => {
   const component = shallow(<Headline {...props} />);
@@ -39,6 +40,20 @@ describe("Headline Component", () => {
       wrapper = setUp(props);
     });
 
+    it("should match snapshot without props", () => {
+      const tree = renderer.create(<Headline />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it("should match snapshot with props", () => {
+      const props = {
+        header: "Test Header",
+        desc: "Test Desc",
+      };
+      const tree = renderer.create(<Headline {...props} />).toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
     it("Should render without errors", () => {
       const component = findByTestAttr(wrapper, "HeadlineComponent");
       expect(component.length).toBe(1);
@@ -53,7 +68,7 @@ describe("Headline Component", () => {
       const desc = findByTestAttr(wrapper, "desc");
       expect(desc.length).toBe(1);
     });
-    
+
     describe("Have no props", () => {
       let wrapper;
       beforeEach(() => {

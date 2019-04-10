@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Headline Component Have props should match snapshot with props 1`] = `
+<div
+  data-test="HeadlineComponent"
+>
+  <h1
+    data-test="header"
+  >
+    Test Header
+  </h1>
+  <p
+    data-test="desc"
+  >
+    Test Desc
+  </p>
+</div>
+`;
+
+exports[`Headline Component Have props should match snapshot without props 1`] = `null`;
